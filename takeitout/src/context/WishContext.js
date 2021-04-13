@@ -1,23 +1,21 @@
-import {createContext} from "react";
-import {useContext,useState} from "react";
+import { createContext } from "react";
+import { useContext, useReducer } from "react";
+import {dataReducer} from "../Reducer/data-reducer";
 
 export const WishContext = createContext();
 
+export function WishProvider({ children }) {
+  const [state, dispatch] = useReducer(dataReducer, { itemsInWish: [] });
 
-
-export function WishProvider({children})
-{
-    const[itemsInWish,setItemsInWish] = useState([]);
-  
-   
-    return(
-        <WishContext.Provider value={{itemsInWish,setItemsInWish}}>
-        {children}
-        </WishContext.Provider>
-    )
+  return (
+    <WishContext.Provider value={{ state, dispatch }}>
+      {children}
+    </WishContext.Provider>
+  );
 }
 
-export function useWish()
-{
-    return  useContext(WishContext);
+export function useWish() {
+  return useContext(WishContext);
 }
+
+

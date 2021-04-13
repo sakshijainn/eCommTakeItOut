@@ -11,8 +11,8 @@ import {useContext} from "react";
 import {ThemeContext} from "../../context/ThemeContext"
 
 function NavigationBar() {
-  const { itemsInCart } = useCart();
-  const { itemsInWish } = useWish();
+  const {state:{itemsInCart}} = useCart();
+  const {state:{itemsInWish}} = useWish();
   const { page, setPage } = useCart();
   const { theme, toggleTheme } = useContext(ThemeContext);
   const routeTo = (newPage) => {
