@@ -3,7 +3,8 @@ import "./wishList.css";
 import { useCart } from "../../context/CartContext";
 
 function WishList() {
-  const { itemsInWish } = useWish();
+  const {state: { itemsInWish }} = useWish();
+ 
   const { setPage } = useCart();
 
   return (

@@ -17,11 +17,12 @@ function CartList() {
   const total = () => {
     let totalVal = 0;
     for (let i = 0; i < itemsInCart.length; i++) {
-      totalVal += itemsInCart[i].price * itemsInCart[i].Quantity;
+      totalVal += itemsInCart[i].price * itemsInCart[i].quantity;
     }
     setCartTotal(totalVal);
   };
 
+  console.log(itemsInCart);
   return (
     <div>
       <div className="gallery1">
@@ -45,7 +46,7 @@ function CartList() {
                 >
                   +
                 </button>
-                {product.Quantity}
+                {product.quantity}
                 <button
                   onClick={() =>
                     cartDispatch({ type: "DECREMENT_QTY", payload: product })

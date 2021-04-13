@@ -1,3 +1,5 @@
+
+
 export const dataReducer = (state, action) => {
  
     switch (action.type) {
@@ -7,8 +9,24 @@ export const dataReducer = (state, action) => {
         return { ...state, products: action.payload };
 
         case "ADD_TO_CART":
-            return { ...state, itemsInCart: action.payload };
-            
+            if (state.itemsInCart.some((cartItem) => cartItem.id === action.payload.id)) {
+              return {
+                ...state,
+                itemsInCart: state.itemsInCart.map((cartItem) =>
+                  cartItem.id === action.payload.id
+                    ? { ...cartItem, quantity: cartItem.quantity + 1 }
+                    : cartItem
+                ),
+              };
+            } else {
+              return {
+                ...state,
+                itemsInCart: state.itemsInCart.concat({
+                  ...action.payload,
+                  quantity: 1,
+                }),
+              };
+            }
       
           
           case "INCREMENT_QTY":
@@ -16,7 +34,7 @@ export const dataReducer = (state, action) => {
               ...state,
               itemsInCart: state.itemsInCart.map((item) =>
                 item.id === action.payload.id
-                  ? { ...item, Quantity: item.Quantity + 1 }
+                  ? { ...item, quantity: item.quantity + 1 }
                   : item
               )
             };
@@ -25,8 +43,8 @@ export const dataReducer = (state, action) => {
             return {
               ...state,
               itemsInCart: state.itemsInCart.map((item) =>
-                item.id === action.payload.id
-                  ? { ...item, Quantity: item.Quantity - 1 }
+                item.id === action.payload.id && item.quantity>=1
+                  ? { ...item, quantity: item.quantity - 1 }
                   : item
               )
             };
@@ -39,12 +57,34 @@ export const dataReducer = (state, action) => {
               )
             };
 
-        case "ADD_TO_WISH": {
-                return { ...state, itemsInWish: action.payload };
-              }
+        case "ADD_TO_WISH": 
+        if (state.itemsInWish.find((wishItem) => wishItem.id === action.payload.id)) {
+            return {
+              ...state,
+              itemsInWish: state.itemsInWish.map((wishItem) =>
+                wishItem.id === action.payload.id
+                  ? { ...wishItem, quantity: wishItem.quantity + 1 }
+                  : wishItem
+              ),
+            };
+          } else {
+            return {
+              ...state,
+              itemsInWish: state.itemsInWish.concat({
+                ...action.payload,
+                quantity: 1,
+              }),
+            };
+          }
+
+
+         
+            
+              
       
+
     
-    }
+}
     
   };
   

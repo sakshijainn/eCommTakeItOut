@@ -10,7 +10,7 @@ export default function Products() {
   const { isToast, setToast } = useCart();
 
   
-  const{ dispatch:productDispatch}= useProduct();
+  const{ state:{products},dispatch:productDispatch}= useProduct();
   
 
   const { state: { itemsInCart },  dispatch:cartDispatch } = useCart();
@@ -31,6 +31,7 @@ export default function Products() {
         setLoader(false);
         // setProducts(response.data.users);
         productDispatch({ type: "SET_PRODUCTS", payload: response.data.users})
+        setLoader(false);
         
       } catch (error) {
         console.log("error");
@@ -40,6 +41,12 @@ export default function Products() {
 
   const ItemsInList = (productID) =>
     itemsInWish.find((x) => x.id === productID) ? true : false;
+
+ 
+     
+      
+  
+  
 
   return (
     <>
@@ -80,7 +87,8 @@ export default function Products() {
 
               <button
                 onClick={() => {
-                  cartDispatch({ type: "ADD_TO_CART", payload: product });
+                  cartDispatch({ type: "ADD_TO_CART", payload: product});
+                  ;
                 }}
                 className="buy-1"
               >

@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {CartProvider} from "./context/CartContext"
 import {WishProvider} from "./context/WishContext"
 import { ThemeProvider } from './context/ThemeContext';
+import {ProductProvider} from "./context/ProductContext";
 
 
 //WITHOUT AN UPSTATE:
@@ -22,11 +23,13 @@ import { ThemeProvider } from './context/ThemeContext';
 ReactDOM.render(
   <React.StrictMode>
   <ThemeProvider>
+  <ProductProvider>
   <CartProvider>
   <WishProvider>
     <App />
     </WishProvider>
   </CartProvider>
+  </ProductProvider>
   </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
