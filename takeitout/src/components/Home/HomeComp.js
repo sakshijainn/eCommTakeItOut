@@ -17,8 +17,7 @@ function HomeComp() {
             <h1>Voice Your Heart Out!</h1>
             <p>What are you waiting for?</p>
             <div className='hero-btns'>
-             <button>SignUp</button>
-            <button > Start Shopping  <i class="fa fa-shopping-bag" aria-hidden="true"></i></button>
+        
                
             
             </div>
