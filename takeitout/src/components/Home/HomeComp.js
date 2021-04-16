@@ -16,11 +16,7 @@ function HomeComp() {
     </video>
             <h1>Voice Your Heart Out!</h1>
             <p>What are you waiting for?</p>
-            <div className='hero-btns'>
-        
-               
-            
-            </div>
+           
            
           </div>
          
