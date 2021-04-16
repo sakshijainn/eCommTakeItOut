@@ -1,6 +1,5 @@
 import React from 'react'
 import './App.css';
-import CartList from './components/cartList/CartList';
 import NavigationBar from './components/NavBar/NavigationBar'
 
 
