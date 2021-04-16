@@ -96,6 +96,12 @@ nav ul li:hover > ul {
   nav {
     margin: 0;
   }
+  nav ul li 
+  {
+    float: left;
+    font-size: 1rem;
+    
+  }
 
   .toggle + a,
   .menu {
@@ -117,18 +123,20 @@ nav ul li:hover > ul {
   }
 
   [id^="drop"]:checked + ul {
-    display: block;
+    display: inline;
   }
 
   nav ul li {
     display: block;
     width: 100%;
+  
   }
 }
 
-@media all and (max-width: 330px) {
+/* @media all and (max-width: 330px) {
   nav ul li {
-    display: block;
+    display: inline;
     width: 94%;
+    text-align: center;
   }
-}
+} */
